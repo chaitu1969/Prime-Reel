@@ -1,11 +1,79 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { checkValidData } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
+  const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
+  };
+
+  const handleButtonClick = () => {
+    // validate the form data
+
+    let errMessage = checkValidData(
+      email.current.value,
+      password.current.value,
+      name.current?.value
+    );
+
+    if (errMessage) {
+      setErrorMessage(errMessage);
+    }
+
+    if (!isSignInForm) {
+      // Sign Up Logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredentail) => {
+          const user = userCredentail.user;
+          updateProfile(user, { displayName: name.current.value });
+          navigate("/");
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode, "-", errorMessage);
+        });
+    }
+    // SignIn Logic
+    signInWithEmailAndPassword(
+      auth,
+      email.current.value,
+      password.current.value
+    )
+      .then((userCredentails) => {
+        updateProfile(auth.currentUser, {
+          displayName: name.current.value,
+          photoURL: userCredentails.user.photoURL,
+        });
+        navigate("/browser");
+        console.log(userCredentails.user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        setErrorMessage(errorCode, "-", errorMessage);
+      });
   };
 
   return (
@@ -17,30 +85,41 @@ const Login = () => {
           src="https://www.justwatch.com/appassets/img/home/global-home-bg-comp.png"
           alt="BackgroundImage"
         ></img>
-        <form className="absolute w-3/12 p-10  my-36 mx-auto right-0 left-0 bg-[#060C16] bg-opacity-70 text-white  rounded-lg text-center">
+        <form
+          className="absolute w-3/12 p-10  my-36 mx-auto right-0 left-0 bg-[#060C16] bg-opacity-70 text-white  rounded-lg text-center"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <h2 className="text-3xl py-1 ">
             {isSignInForm ? "Sign In" : "Sign Up"}
           </h2>
-          {isSignInForm && (
+          {!isSignInForm && (
             <input
+              ref={name}
               type="text"
               placeholder="Full Name"
               className="p-2 my-2 w-full bg-gray-100 text-black rounded-lg "
             ></input>
           )}
           <input
+            ref={email}
             type="text"
             placeholder="Email Address"
             className="p-2 my-2 w-full bg-gray-100 text-black rounded-lg "
           ></input>
 
           <input
+            ref={password}
             type="password"
             placeholder="Password"
             className="p-2 my-2 w-full bg-gray-100 text-black rounded-lg "
           ></input>
 
-          <button className="p-2 my-2 rounded-lg bg-yellow-300 text-black w-full ">
+          <p className="text-red-500 font-bold text-lg py-2">{errorMessage}</p>
+
+          <button
+            className="p-2 my-2 rounded-lg bg-yellow-300 text-black w-full"
+            onClick={handleButtonClick}
+          >
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
 
