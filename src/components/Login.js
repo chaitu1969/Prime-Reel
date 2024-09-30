@@ -7,7 +7,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -16,8 +15,6 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
-
-  const navigate = useNavigate();
 
   const toggleSignInForm = () => {
     setIsSignInForm(!isSignInForm);
@@ -46,8 +43,6 @@ const Login = () => {
         .then((userCredentail) => {
           const user = userCredentail.user;
           updateProfile(user, { displayName: name.current.value });
-          navigate("/");
-          console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -66,8 +61,6 @@ const Login = () => {
           displayName: name.current.value,
           photoURL: userCredentails.user.photoURL,
         });
-        navigate("/browser");
-        console.log(userCredentails.user);
       })
       .catch((error) => {
         const errorCode = error.code;
