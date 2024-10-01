@@ -28,6 +28,12 @@
     - update Store with Trailer Video Data
     - Embedded the youtube video and make it auto play and mute
     - Tailwind classes to make it look better
+    - Seconday container
+    - MovieList
+    - Movie Card
+    - TMDB Imagee CDN URL
+    - usePopularMovies custom hook
+    - useTrendingMovues custom hook
 
 # Features
 
