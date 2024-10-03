@@ -4,6 +4,8 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import { PHOTO_URL } from "../utils/constants";
+import { toggleGptSearchView } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -39,18 +41,29 @@ const Header = () => {
       });
   };
 
+  const handleGptSearch = () => {
+    // Toggle Gpt Search
+    dispatch(toggleGptSearchView());
+  };
+
   return (
     <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
       <img className="w-44 pt-4" src="/PrimeReel-Logo.png" alt="logo"></img>
       {user && (
-        <div className="flex align-middle">
+        <div className="flex items-center p-2 flex-row justify-between">
+          <button
+            className=" rounded-md py-1 text-center mx-3 my-2 text-slate-400 font-bold hover:text-white transis7on duration-700 ease-in-out "
+            onClick={handleGptSearch}
+          >
+            AI Search
+          </button>
           <img
-            className="absolute w-4 h-4 m-2 cursor-pointer"
-            src="https://cdn-icons-png.flaticon.com/512/14722/14722107.png"
-            alt="icon"
+            className=" w-4 h-4 mr-2 cursor-pointer"
+            src={user?.photoURL || PHOTO_URL}
+            alt="UserIcon"
           ></img>
           <button
-            className="text-white pl-10 font-bold"
+            className="font-bold  text-slate-400  hover:text-white transis7on duration-700 ease-in-out"
             onClick={handleSignOut}
           >
             Sign Out

@@ -9,3 +9,5 @@ export const API_OPTIONS = {
   },
 };
 export const IMG_CDN = "https://image.tmdb.org/t/p/w780";
+export const PHOTO_URL =
+  "https://cdn-icons-png.flaticon.com/512/14722/14722107.png";
