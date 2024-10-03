@@ -34,6 +34,8 @@
     - TMDB Imagee CDN URL
     - usePopularMovies custom hook
     - useTrendingMovues custom hook
+    - AI search Page
+    - AI search Bar
 
 # Features
 
