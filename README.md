@@ -36,6 +36,13 @@
     - useTrendingMovues custom hook
     - AI search Page
     - AI search Bar
+    - Get Open Ai Api key
+    - Gpt Search Api call
+    - Fetch gptMovie suggestion
+    - created gpt slice added data
+    - Reused movie list component to make movie suggestion container
+    - memoization
+    - Adding .env file to a gitignore
 
 # Features
 

@@ -10,10 +10,13 @@ import { toggleGptSearchView } from "../utils/gptSlice";
 const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const gptSearch = useSelector((store) => store.gpt.showGptSearch);
   const dispatch = useDispatch();
 
   // User is logged in redirect to brower page else to homePage/LoginPage
   // useNavigate can only implement in BrowserRouter only.
+  // console.log(process.env.REACT_APP_AI_KEY);
+  // console.log(process.env.REACT_APP_AI_KEY);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -47,15 +50,19 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-      <img className="w-44 pt-4" src="/PrimeReel-Logo.png" alt="logo"></img>
+    <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between ">
+      <img
+        className="w-44 pt-4 mx-auto md:mx-0"
+        src="/PrimeReel-Logo.png"
+        alt="logo"
+      ></img>
       {user && (
         <div className="flex items-center p-2 flex-row justify-between">
           <button
             className=" rounded-md py-1 text-center mx-3 my-2 text-slate-400 font-bold hover:text-white transis7on duration-700 ease-in-out "
             onClick={handleGptSearch}
           >
-            AI Search
+            {gptSearch ? "Home Page" : "Ai Search"}
           </button>
           <img
             className=" w-4 h-4 mr-2 cursor-pointer"

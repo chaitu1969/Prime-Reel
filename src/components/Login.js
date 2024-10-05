@@ -74,12 +74,12 @@ const Login = () => {
       <Header />
       <div>
         <img
-          className="w-screen h-screen absolute"
+          className=" h-screen absolute object-cover"
           src="https://www.justwatch.com/appassets/img/home/global-home-bg-comp.png"
           alt="BackgroundImage"
         ></img>
         <form
-          className="absolute w-3/12 p-10  my-36 mx-auto right-0 left-0 bg-[#060C16] bg-opacity-70 text-white  rounded-lg text-center"
+          className="absolute md:w-3/12 p-10  my-36 mx-auto right-0 left-0 bg-[#060C16] bg-opacity-70 text-white  rounded-lg text-center"
           onSubmit={(e) => e.preventDefault()}
         >
           <h2 className="text-3xl py-1 ">
