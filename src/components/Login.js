@@ -74,7 +74,7 @@ const Login = () => {
       <Header />
       <div>
         <img
-          className=" h-screen absolute object-cover"
+          className=" h-screen absolute w-full"
           src="https://www.justwatch.com/appassets/img/home/global-home-bg-comp.png"
           alt="BackgroundImage"
         ></img>
