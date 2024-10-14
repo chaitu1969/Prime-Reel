@@ -73,23 +73,55 @@ GitHub Repository: [Prime Reel GitHub](https://github.com/chaitu1969/Prime-Reel)
 ## 📂 **Project Structure**
 
 ```
-/src
- ├── components/
- │   ├── Header.js
- │   ├── LoginForm.js
- │   ├── MovieCard.js
- │   ├── MovieList.js
- │   ├── AIRecommendation.js
- ├── hooks/
- │   ├── useNowPlayingMovies.js
- │   ├── usePopularMovies.js
- │   ├── useTrendingMovies.js
- ├── redux/
- │   ├── userSlice.js
- │   ├── movieSlice.js
- │   ├── gptSlice.js
- ├── constants/
- │   └── constant.js
+Prime-Reel/
+│
+├── src/
+│   ├── components/                 # UI components of the application
+│   │   ├── Body.js                 # Main body of the homepage
+│   │   ├── Browse.js               # Browse page to explore movies
+│   │   ├── gptMovieSuggestion.js   # GPT-based movie suggestion logic
+│   │   ├── GptSearch.js            # Search component powered by GPT
+│   │   ├── gptSearchBar.js         # Input bar for GPT movie search
+│   │   ├── Header.js               # Header component with navigation links
+│   │   ├── Login.js                # Login page
+│   │   ├── MainContainer.js        # Primary container for the app layout
+│   │   ├── MovieCard.js            # Component displaying a movie card
+│   │   ├── MovieList.js            # Component rendering a list of movies
+│   │   ├── SecondaryContainer.js   # Secondary section container
+│   │   ├── VideoBackground.js      # Component for video background
+│   │   └── VideoTitle.js           # Component for video title display
+│   │
+│   ├── hooks/                      # Custom hooks for stateful logic
+│   │   ├── useMovieTrailer.js      # Hook to fetch movie trailers
+│   │   ├── useNowPlayingMovies.js  # Hook to fetch now-playing movies
+│   │   ├── usePopularMovies.js     # Hook to fetch popular movies
+│   │   └── useTopRatingMovies.js   # Hook to fetch top-rated movies
+│   │
+│   ├── utils/                      # Utility functions and configs
+│   │   ├── appStore.js             # Redux store configuration
+│   │   ├── auth.js                 # Firebase authentication logic
+│   │   ├── constants.js            # Application-wide constants
+│   │   ├── firebase.js             # Firebase initialization
+│   │   ├── gptSlice.js             # Redux slice for GPT data
+│   │   ├── movieSlice.js           # Redux slice for movie data
+│   │   ├── openai.js               # OpenAI API configuration
+│   │   ├── userSlice.js            # Redux slice for user data
+│   │   └── validate.js             # Validation utilities
+│   │
+│   ├── App.css                     # Global CSS for the app
+│   ├── App.js                      # Root component of the React app
+│   ├── index.css                   # Base styles for the app
+│   └── index.js                    # Entry point of the React app
+│
+├── .env                            # Environment variables
+├── .firebaserc                     # Firebase project configuration
+├── .gitignore                      # Ignored files for Git
+├── firebase.json                   # Firebase hosting configuration
+├── package-lock.json               # Dependencies lock file
+├── package.json                    # Project dependencies and scripts
+├── tailwind.config.js              # TailwindCSS configuration
+└── README.md                       # Project documentation
+
 ```
 
 ---
