@@ -1,6 +1,7 @@
 import React from "react";
 import Login from "./Login";
 import Browse from "./Browse";
+import ErrorPage from "./ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const Body = () => {
@@ -12,6 +13,10 @@ const Body = () => {
     {
       path: "/browser",
       element: <Browse />,
+    },
+    {
+      path: "*",
+      element: <ErrorPage />,
     },
   ]);
 
