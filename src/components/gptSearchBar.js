@@ -14,7 +14,7 @@ const GptSearchBar = () => {
       "https://api.themoviedb.org/3/search/movie?query=" +
         movie +
         "&include_adult=false&language=en-US&page=1",
-      API_OPTIONS
+      API_OPTIONS,
     );
 
     const json = await data.json();
@@ -59,19 +59,19 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="pt-[35%] md:pt-[7%] flex justify-center">
+    <div className="flex justify-center pt-[35%] md:pt-[7%]">
       <form
-        className=" w-full md:w-1/2 rounded-lg  grid grid-cols-12"
+        className="grid w-full grid-cols-12 rounded-lg md:w-1/2"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           type="text"
-          className="p-2 ml-4 border-s-black col-span-9 rounded-lg text-center"
+          className="col-span-9 ml-4 rounded-lg border-s-black p-2 text-center"
           placeholder="Search here .."
           ref={searchText}
         ></input>
         <button
-          className="p-2 mx-4 bg-red-700  text-white rounded-lg col-span-3"
+          className="col-span-3 mx-4 rounded-lg bg-red-700 p-2 text-white"
           onClick={handleAISearch}
         >
           Search

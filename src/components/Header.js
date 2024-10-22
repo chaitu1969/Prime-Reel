@@ -50,27 +50,27 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-10 flex flex-col md:flex-row justify-between ">
+    <div className="absolute z-10 flex w-full flex-col justify-between bg-gradient-to-b from-black px-8 py-2 md:flex-row">
       <img
-        className="w-44 pt-4 mx-auto md:mx-0"
+        className="mx-auto w-44 pt-4 md:mx-0"
         src="/PrimeReel-Logo.png"
         alt="logo"
       ></img>
       {user && (
-        <div className="flex items-center p-2 flex-row justify-between">
+        <div className="flex flex-row items-center justify-between p-2">
           <button
-            className=" rounded-md py-1 text-center mx-3 my-2 text-slate-400 font-bold hover:text-white transis7on duration-700 ease-in-out "
+            className="mx-3 my-2 rounded-md py-1 text-center font-bold text-slate-400 transition duration-700 ease-in-out hover:text-white"
             onClick={handleGptSearch}
           >
             {gptSearch ? "Home Page" : "Ai Search"}
           </button>
           <img
-            className=" w-4 h-4 mr-2 cursor-pointer"
+            className="mr-2 h-4 w-4 cursor-pointer"
             src={user?.photoURL || PHOTO_URL}
             alt="UserIcon"
           ></img>
           <button
-            className="font-bold  text-slate-400  hover:text-white transis7on duration-700 ease-in-out"
+            className="font-bold text-slate-400 transition duration-700 ease-in-out hover:text-white"
             onClick={handleSignOut}
           >
             Sign Out

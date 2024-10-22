@@ -10,6 +10,6 @@ root.render(
   // <React.StrictMode>
   <ErrorBoundary fallback={<ErrorPage />}>
     <App />
-  </ErrorBoundary>
+  </ErrorBoundary>,
   // </React.StrictMode>
 );

@@ -10,8 +10,8 @@ const SecondaryContainer = () => {
 
   return (
     movies.nowPlayingMovies && (
-      <div className=" bg-black">
-        <div className="mt-0 md:-mt-72 relative z-20 pl-12">
+      <div className="bg-black">
+        <div className="relative z-20 mt-0 pl-12 md:-mt-72">
           <Suspense fallback={<ShimmerUI></ShimmerUI>}>
             <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies} />
             <MovieList title={"Popular"} movies={movies.popularMovies} />
